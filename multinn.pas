@@ -1,4 +1,4 @@
-unit Unit1; 
+unit MultiNN;
 
 {$mode objfpc}{$H+}
 
@@ -16,6 +16,7 @@ type
     Button1: TButton;
     cbBinary: TCheckBox;
     cbActivationFunction: TComboBox;
+    nrLayers: TLabel;
     lbTheta: TEdit;
     lbOutput: TEdit;
     GParameter: TEdit;
@@ -31,6 +32,7 @@ type
     lbAParameter: TLabel;
     lbNrInputs: TLabel;
     seNr: TSpinEdit;
+    seNr1: TSpinEdit;
     procedure cbBinaryChange(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
     procedure Edit6Change(Sender: TObject);
@@ -39,10 +41,10 @@ type
     procedure Input1Change(Sender: TObject);
   private
     { private declarations }
-    DinamicInputs: array[0..50] of TEdit;
-    DinamicWeights: array[0..50] of TEdit;
-    DinamicInputsLabels : array[0..50] of TLabel;
-    DinamicWeightsLabels : array[0..50] of TLabel;
+    DinamicInputs: TList;
+    DinamicWeights: TList;
+    DinamicInputsLabels : TList;
+    DinamicWeightsLabels : TList;
   public
     { public declarations }
     function linearCombine(w,x : array of double):double;
@@ -57,8 +59,10 @@ type
 
 var
   Form1: TForm1;
-  w,x : array[0..50] of double;
+  n : Integer ;   // Number of inputs
+  w,x : Tlist;
   binary : boolean;
+  l : Integer;    // Number of hidden layers
 
 implementation
 
@@ -101,6 +105,8 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 var i : integer;
 begin
+  n := 2 ;
+  l := 2 ;
   for i:=0 to 50 do
    begin
      DinamicInputs[i]:=TEdit.Create(self);

@@ -1,20 +1,20 @@
 object Form1: TForm1
-  Left = 74
-  Height = 799
-  Top = 28
-  Width = 1325
-  Caption = 'Simple Neuron'
-  ClientHeight = 799
-  ClientWidth = 1325
+  Left = 0
+  Height = 718
+  Top = 0
+  Width = 1366
+  Caption = 'Multiple Neural Networks'
+  ClientHeight = 718
+  ClientWidth = 1366
   Color = clWindow
   OnCreate = FormCreate
   OnShow = Input1Change
   LCLVersion = '0.9.30'
   object lbNrInputs: TLabel
-    Left = 112
-    Height = 16
-    Top = 8
-    Width = 22
+    Left = 144
+    Height = 18
+    Top = 0
+    Width = 20
     Caption = 'N='
     ParentColor = False
   end
@@ -36,7 +36,7 @@ object Form1: TForm1
   end
   object InputFunctionOut: TEdit
     Left = 315
-    Height = 25
+    Height = 27
     Top = 192
     Width = 80
     TabOrder = 1
@@ -44,9 +44,9 @@ object Form1: TForm1
   end
   object InputFuncLabel: TLabel
     Left = 312
-    Height = 16
+    Height = 18
     Top = 164
-    Width = 137
+    Width = 138
     Caption = 'Input Function Out'
     Font.Style = [fsBold]
     ParentColor = False
@@ -58,7 +58,7 @@ object Form1: TForm1
     Top = 116
     Width = 249
     Caption = 'Neuron Data'
-    ClientHeight = 275
+    ClientHeight = 273
     ClientWidth = 245
     TabOrder = 2
     object cbActivationFunction: TComboBox
@@ -82,7 +82,7 @@ object Form1: TForm1
     end
     object lbTheta: TEdit
       Left = 27
-      Height = 25
+      Height = 27
       Top = 103
       Width = 80
       TabOrder = 1
@@ -90,7 +90,7 @@ object Form1: TForm1
     end
     object Label10: TLabel
       Left = 27
-      Height = 16
+      Height = 18
       Top = 7
       Width = 141
       Caption = 'Activation Function'
@@ -100,9 +100,9 @@ object Form1: TForm1
     end
     object Label11: TLabel
       Left = 27
-      Height = 16
+      Height = 18
       Top = 87
-      Width = 42
+      Width = 43
       Caption = 'Theta'
       Font.Style = [fsBold]
       ParentColor = False
@@ -110,7 +110,7 @@ object Form1: TForm1
     end
     object GParameter: TEdit
       Left = 27
-      Height = 25
+      Height = 27
       Top = 155
       Width = 80
       TabOrder = 2
@@ -118,7 +118,7 @@ object Form1: TForm1
     end
     object AParameter: TEdit
       Left = 27
-      Height = 25
+      Height = 27
       Top = 211
       Width = 80
       TabOrder = 3
@@ -126,9 +126,9 @@ object Form1: TForm1
     end
     object lbGParameter: TLabel
       Left = 27
-      Height = 16
+      Height = 18
       Top = 139
-      Width = 12
+      Width = 11
       Caption = 'G'
       Font.Style = [fsBold]
       ParentColor = False
@@ -136,9 +136,9 @@ object Form1: TForm1
     end
     object lbAParameter: TLabel
       Left = 27
-      Height = 16
+      Height = 18
       Top = 187
-      Width = 11
+      Width = 12
       Caption = 'A'
       Font.Style = [fsBold]
       ParentColor = False
@@ -147,7 +147,7 @@ object Form1: TForm1
   end
   object lbOutput: TEdit
     Left = 768
-    Height = 25
+    Height = 27
     Top = 168
     Width = 80
     TabOrder = 3
@@ -155,9 +155,9 @@ object Form1: TForm1
   end
   object Label12: TLabel
     Left = 768
-    Height = 16
+    Height = 18
     Top = 144
-    Width = 110
+    Width = 111
     Caption = 'Neuron Output'
     Font.Style = [fsBold]
     ParentColor = False
@@ -165,7 +165,7 @@ object Form1: TForm1
   end
   object cbBinary: TCheckBox
     Left = 768
-    Height = 22
+    Height = 21
     Top = 208
     Width = 68
     Caption = 'Binary '
@@ -186,9 +186,9 @@ object Form1: TForm1
     TabOrder = 5
   end
   object seNr: TSpinEdit
-    Left = 136
-    Height = 25
-    Top = 8
+    Left = 176
+    Height = 27
+    Top = 0
     Width = 91
     Color = clMoneyGreen
     Font.Color = cl3DDkShadow
@@ -197,5 +197,26 @@ object Form1: TForm1
     ParentFont = False
     TabOrder = 6
     Value = 8
+  end
+  object seNr1: TSpinEdit
+    Left = 48
+    Height = 27
+    Top = 0
+    Width = 91
+    Color = clMoneyGreen
+    Font.Color = cl3DDkShadow
+    MaxValue = 50
+    OnChange = Edit1Change
+    ParentFont = False
+    TabOrder = 7
+    Value = 2
+  end
+  object nrLayers: TLabel
+    Left = 24
+    Height = 18
+    Top = 0
+    Width = 17
+    Caption = 'L='
+    ParentColor = False
   end
 end
