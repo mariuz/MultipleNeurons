@@ -31,7 +31,7 @@ type
     lbGParameter: TLabel;
     lbAParameter: TLabel;
     lbNrInputs: TLabel;
-    seNr: TSpinEdit;
+    NrInputs: TSpinEdit;
     seNr1: TSpinEdit;
     procedure cbBinaryChange(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
@@ -62,7 +62,7 @@ var
   n : Integer ;   // Number of inputs
   w,x : TVector;
   binary : boolean;
-  l : Integer;    // Number of hidden layers
+  nrHiddenLayers : Integer;    // Number of hidden layers
 
 implementation
 
@@ -99,7 +99,7 @@ var i : integer;
     tmpLabel : Tlabel;
 begin
   n := 2 ;
-  l := 2 ;
+  nrHiddenLayers:= 2 ;
   DinamicInputs:= TList.Create();
   DinamicWeights:= TList.Create();
   DinamicInputsLabels := TList.Create();
@@ -113,7 +113,7 @@ begin
      tmpEdit.Left := 71;
      tmpEdit.Top := 80 +30*i;
      tmpEdit.Height:= 27;
-     tmpEdit.Visible:= false;
+     tmpEdit.Visible:= true;
      tmpEdit.Parent := Form1;
      tmpEdit.OnEditingDone:= @Input1Change;
      DinamicInputs.Add(tmpEdit);
@@ -123,7 +123,7 @@ begin
      tmpLabel.Left := 20;
      tmpLabel.Top := 80 +30*i;
      tmpLabel.Height:= 27;
-     tmpLabel.Visible:= false;
+     tmpLabel.Visible:= true;
      tmpLabel.Parent := Form1;
      DinamicInputsLabels.Add(tmpLabel);
 
@@ -133,7 +133,7 @@ begin
      tmpEdit.Left := 230;
      tmpEdit.Top := 80 +30*i;
      tmpEdit.Height:= 27;
-     tmpEdit.Visible:= false;
+     tmpEdit.Visible:= true;
      tmpEdit.Parent := Form1;
      DinamicWeights.Add(tmpEdit);
 
@@ -143,7 +143,7 @@ begin
      tmpLabel.Left := 150;
      tmpLabel.Top := 80 +30*i;
      tmpLabel.Height:= 27;
-     tmpLabel.Visible:= false;
+     tmpLabel.Visible:= true;
      tmpLabel.Parent := Form1;
      DinamicWeightsLabels.Add(tmpLabel);
   end;
@@ -210,7 +210,7 @@ end;
 function TForm1.linearCombine(w,x : TVector):double;
   var j,m:integer;
   begin
-  m:= StrToInt(seNr.Text)-1;
+  m:= StrToInt(NrInputs.Text)-1;
   if  InputFunction.ItemIndex =0 then
       begin
       result := 0;

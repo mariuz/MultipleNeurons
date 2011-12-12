@@ -185,7 +185,7 @@ object Form1: TForm1
     OnClick = Input1Change
     TabOrder = 5
   end
-  object seNr: TSpinEdit
+  object NrInputs: TSpinEdit
     Left = 176
     Height = 27
     Top = 0
@@ -196,7 +196,7 @@ object Form1: TForm1
     OnChange = Edit1Change
     ParentFont = False
     TabOrder = 6
-    Value = 8
+    Value = 2
   end
   object seNr1: TSpinEdit
     Left = 48
