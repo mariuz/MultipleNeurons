@@ -39,7 +39,7 @@
         <Filename Value="neuron.lpr"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="neuron"/>
-        <UsageCount Value="47"/>
+        <UsageCount Value="54"/>
       </Unit0>
       <Unit1>
         <Filename Value="multinn.pas"/>
@@ -50,10 +50,10 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="0"/>
         <WindowIndex Value="0"/>
-        <TopLine Value="43"/>
-        <CursorPos X="20" Y="62"/>
+        <TopLine Value="49"/>
+        <CursorPos X="60" Y="190"/>
         <ComponentState Value="2"/>
-        <UsageCount Value="47"/>
+        <UsageCount Value="54"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -65,19 +65,127 @@
         <UsageCount Value="10"/>
       </Unit2>
     </Units>
-    <JumpHistory Count="3" HistoryIndex="2">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="multinn.pas"/>
-        <Caret Line="64" Column="109" TopLine="73"/>
+        <Caret Line="122" Column="6" TopLine="102"/>
       </Position1>
       <Position2>
         <Filename Value="multinn.pas"/>
-        <Caret Line="63" Column="19" TopLine="43"/>
+        <Caret Line="113" Column="6" TopLine="102"/>
       </Position2>
       <Position3>
         <Filename Value="multinn.pas"/>
-        <Caret Line="62" Column="15" TopLine="42"/>
+        <Caret Line="84" Column="19" TopLine="64"/>
       </Position3>
+      <Position4>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="83" Column="18" TopLine="64"/>
+      </Position4>
+      <Position5>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="81" Column="15" TopLine="64"/>
+      </Position5>
+      <Position6>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="46" Column="5" TopLine="26"/>
+      </Position6>
+      <Position7>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="44" Column="18" TopLine="26"/>
+      </Position7>
+      <Position8>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="46" Column="18" TopLine="26"/>
+      </Position8>
+      <Position9>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="81" Column="28" TopLine="49"/>
+      </Position9>
+      <Position10>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="83" Column="31" TopLine="51"/>
+      </Position10>
+      <Position11>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="84" Column="32" TopLine="52"/>
+      </Position11>
+      <Position12>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="113" Column="19" TopLine="81"/>
+      </Position12>
+      <Position13>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="122" Column="19" TopLine="90"/>
+      </Position13>
+      <Position14>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="165" Column="58" TopLine="145"/>
+      </Position14>
+      <Position15>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="174" Column="42" TopLine="146"/>
+      </Position15>
+      <Position16>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="165" Column="58" TopLine="145"/>
+      </Position16>
+      <Position17>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="106" Column="3" TopLine="80"/>
+      </Position17>
+      <Position18>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="169" Column="58" TopLine="264"/>
+      </Position18>
+      <Position19>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="160" Column="64" TopLine="149"/>
+      </Position19>
+      <Position20>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="171" Column="36" TopLine="151"/>
+      </Position20>
+      <Position21>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="172" Column="57" TopLine="152"/>
+      </Position21>
+      <Position22>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="171" Column="36" TopLine="151"/>
+      </Position22>
+      <Position23>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="172" Column="53" TopLine="152"/>
+      </Position23>
+      <Position24>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="171" Column="36" TopLine="151"/>
+      </Position24>
+      <Position25>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="170" Column="54" TopLine="151"/>
+      </Position25>
+      <Position26>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="106" Column="41" TopLine="85"/>
+      </Position26>
+      <Position27>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="170" Column="21" TopLine="150"/>
+      </Position27>
+      <Position28>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="9" Column="15" TopLine="1"/>
+      </Position28>
+      <Position29>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="173" Column="14" TopLine="145"/>
+      </Position29>
+      <Position30>
+        <Filename Value="multinn.pas"/>
+        <Caret Line="174" Column="58" TopLine="152"/>
+      </Position30>
     </JumpHistory>
   </ProjectOptions>
   <CompilerOptions>

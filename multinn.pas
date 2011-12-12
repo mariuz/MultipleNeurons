@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  Spin;
+  Spin,VectorU;
 
 type
 
@@ -47,7 +47,7 @@ type
     DinamicWeightsLabels : TList;
   public
     { public declarations }
-    function linearCombine(w,x : array of double):double;
+    function linearCombine(w,x : TVector):double;
     function treshold(v:double):double;
     function sigmoid (v, g: double):double;
     function tanh(v:double):double;
@@ -60,7 +60,7 @@ type
 var
   Form1: TForm1;
   n : Integer ;   // Number of inputs
-  w,x : Tlist;
+  w,x : TVector;
   binary : boolean;
   l : Integer;    // Number of hidden layers
 
@@ -78,22 +78,13 @@ procedure TForm1.Edit1Change(Sender: TObject);
 var i : integer;
 begin
 
-  for i:=0 to 50 do
-   if i<=StrToInt(seNr.Text)-1 then
+  for i:=0 to DinamicInputs.Count-1 do
       begin
-           DinamicInputs[i].Show;
-           DinamicInputsLabels[i].Show;
-           DinamicWeights[i].Show;
-           DinamicWeightsLabels[i].Show;
+           TEdit(DinamicInputs[i]).Show;
+           TLabel(DinamicInputsLabels[i]).Show;
+           TEdit(DinamicWeights[i]).Show;
+           TLabel(DinamicWeightsLabels[i]).Show;
       end
-   else
-       begin
-         DinamicInputs[i].Hide;
-         DinamicInputsLabels[i].Hide;
-         DinamicWeights[i].Hide;
-         DinamicWeightsLabels[i].Hide;
-
-       end;
 
 end;
 
@@ -104,44 +95,57 @@ end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 var i : integer;
+    tmpEdit : Tedit;
+    tmpLabel : Tlabel;
 begin
   n := 2 ;
   l := 2 ;
-  for i:=0 to 50 do
+  DinamicInputs:= TList.Create();
+  DinamicWeights:= TList.Create();
+  DinamicInputsLabels := TList.Create();
+  DinamicWeightsLabels := TList.Create();
+  w := TVector.Create();
+  x := TVector.Create();
+  for i:=0 to n-1 do
    begin
-     DinamicInputs[i]:=TEdit.Create(self);
-     DinamicInputs[i].Text := '0';
-     DinamicInputs[i].Left := 71;
-     DinamicInputs[i].Top := 80 +30*i;
-     DinamicInputs[i].Height:= 27;
-     DinamicInputs[i].Visible:= false;
-     DinamicInputs[i].Parent := Form1;
-     DinamicInputs[i].OnEditingDone:= @Input1Change;
+     tmpEdit:=TEdit.Create(self);
+     tmpEdit.Text := '0';
+     tmpEdit.Left := 71;
+     tmpEdit.Top := 80 +30*i;
+     tmpEdit.Height:= 27;
+     tmpEdit.Visible:= false;
+     tmpEdit.Parent := Form1;
+     tmpEdit.OnEditingDone:= @Input1Change;
+     DinamicInputs.Add(tmpEdit);
 
-     DinamicInputsLabels[i]:=TLabel.Create(self);
-     DinamicInputsLabels[i].Caption := 'Input '+IntToStr(i+1);
-     DinamicInputsLabels[i].Left := 20;
-     DinamicInputsLabels[i].Top := 80 +30*i;
-     DinamicInputsLabels[i].Height:= 27;
-     DinamicInputsLabels[i].Visible:= false;
-     DinamicInputsLabels[i].Parent := Form1;
-
-     DinamicWeights[i]:=TEdit.Create(self);
-     DinamicWeights[i].Text := '0';
-     DinamicWeights[i].Left := 230;
-     DinamicWeights[i].Top := 80 +30*i;
-     DinamicWeights[i].Height:= 27;
-     DinamicWeights[i].Visible:= false;
-     DinamicWeights[i].Parent := Form1;
+     tmpLabel:=TLabel.Create(self);
+     tmpLabel.Caption := 'Input '+IntToStr(i+1);
+     tmpLabel.Left := 20;
+     tmpLabel.Top := 80 +30*i;
+     tmpLabel.Height:= 27;
+     tmpLabel.Visible:= false;
+     tmpLabel.Parent := Form1;
+     DinamicInputsLabels.Add(tmpLabel);
 
 
-     DinamicWeightsLabels[i]:=TLabel.Create(self);
-     DinamicWeightsLabels[i].Caption := '*Weight '+IntToStr(i+1);
-     DinamicWeightsLabels[i].Left := 150;
-     DinamicWeightsLabels[i].Top := 80 +30*i;
-     DinamicWeightsLabels[i].Height:= 27;
-     DinamicWeightsLabels[i].Visible:= false;
-     DinamicWeightsLabels[i].Parent := Form1;
+     tmpEdit:=TEdit.Create(self);
+     tmpEdit.Text := '0';
+     tmpEdit.Left := 230;
+     tmpEdit.Top := 80 +30*i;
+     tmpEdit.Height:= 27;
+     tmpEdit.Visible:= false;
+     tmpEdit.Parent := Form1;
+     DinamicWeights.Add(tmpEdit);
+
+
+     tmpLabel:=TLabel.Create(self);
+     tmpLabel.Caption := '*Weight '+IntToStr(i+1);
+     tmpLabel.Left := 150;
+     tmpLabel.Top := 80 +30*i;
+     tmpLabel.Height:= 27;
+     tmpLabel.Visible:= false;
+     tmpLabel.Parent := Form1;
+     DinamicWeightsLabels.Add(tmpLabel);
   end;
 
 end;
@@ -155,20 +159,19 @@ end;
 
 procedure TForm1.Input1Change(Sender: TObject);
 var u,y,v : double;
-var temp_edit : String;
 var m ,j : integer;
 var g ,a , theta: double;
+var tmpStr:String;
 begin
     theta := StrToFloat(lbTheta.Text);
     g := StrToFloat(GParameter.Text);
     a := StrToFloat(AParameter.Text);;
-    m:= 50;
-    for j:=0 to m do
+    m:= n;
+    for j:=0 to m-1 do
          begin
-         temp_edit := DinamicInputs[j].Text;
-         x[j] := StrToFloat(temp_edit);
-         w[j] := StrToFloat(DinamicWeights[j].Text);
-
+         tmpStr :=  TEdit(DinamicInputs[j]).Text;
+         x.Add(StrToFloat(tmpStr));
+         w.Add(StrToFloat(TEdit(DinamicWeights[j]).Text));
          end;
     u := linearCombine(w,x);
     InputFunctionOut.Caption:= FloatToStr(u);
@@ -204,7 +207,7 @@ begin
     lbOutput.Text := FloatToStr(y)
 end;
 
-function TForm1.linearCombine(w,x : array of double):double;
+function TForm1.linearCombine(w,x : TVector):double;
   var j,m:integer;
   begin
   m:= StrToInt(seNr.Text)-1;
